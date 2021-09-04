@@ -7,7 +7,7 @@ from util.core import *
 from util.emails.core import *
 from mechanize import Browser
 
-def breach(user):
+def breach(user) -> str:
     results = []
     
     res = requests.get(
@@ -28,7 +28,7 @@ def breach(user):
     return results
 
 
-def banner():
+def banner() -> str:
     if os.name == 'nt':
         _ = os.system('cls')
     else:
@@ -42,7 +42,7 @@ def banner():
 {colours.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colours.darktext}
  ''')
 
-def menu():
+def menu() -> str:
     print(f'''{returnColor("[1]")} Target User
 {returnColor("[2]")} Target Email
 ''')
@@ -58,7 +58,7 @@ def menu():
         if checkEmail(target) == True: print(f'Email has been {returnColor("Taken")}')
         else: print(f'No account with this email')
 
-def brutedomain(email, chars):
+def brutedomain(email, chars) -> str:
     guesses = []
 
     domain_file = open('files/emails.txt', 'r').readlines()
@@ -73,7 +73,7 @@ def brutedomain(email, chars):
 
     return guesses[-1]
 
-def scraper(target: str):
+def scraper(target: str) -> str:
         url = "https://api.twitter.com/graphql/P8ph10GzBbdMqWZxulqCfA/UserByScreenName?variables=%7B%22screen_name%22%3A%22" + target + "%22%2C%22withHighlightedLabel%22%3Atrue%7D"
         headers = {
             "accept": "*/*",
@@ -163,7 +163,7 @@ def scraper(target: str):
         email = brutedomain(email, None)
         return [name, email, phone]
 
-def checkUsername(username):
+def checkUsername(username) -> str:
     url = f"https://api.twitter.com/graphql/P8ph10GzBbdMqWZxulqCfA/UserByScreenName?variables=%7B%22screen_name%22%3A%22{username}%22%2C%22withHighlightedLabel%22%3Atrue%7D"
     headers = {
         "accept": "*/*",
