@@ -7,7 +7,7 @@ from util.core import *
 from util.emails.core import *
 from mechanize import Browser
 
-def breach(user) -> str:
+def breach(user) -> list:
     results = []
     
     res = requests.get(
@@ -28,7 +28,7 @@ def breach(user) -> str:
     return results
 
 
-def banner() -> str:
+def banner():
     if os.name == 'nt':
         _ = os.system('cls')
     else:
@@ -42,7 +42,7 @@ def banner() -> str:
 {colours.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colours.darktext}
  ''')
 
-def menu() -> str:
+def menu():
     print(f'''{returnColor("[1]")} Target User
 {returnColor("[2]")} Target Email
 ''')
