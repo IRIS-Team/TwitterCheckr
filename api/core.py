@@ -4,6 +4,7 @@ from requests.adapters import HTTPAdapter
 from fake_headers import Headers
 from urllib3.util.ssl_ import create_urllib3_context
 from util.core import *
+from emails.core import *
 from mechanize import Browser
 
 def breach(user):
@@ -48,9 +49,14 @@ def menu():
     choice = int(input(f'{returnColor(">")} '))
     if choice == 1:
         target = input(f'Username: {returnColor("@")}')
-        return target
+        check = checkUsername(target)
+        if check == False: exit('Invalid Handle')
+        else: print(f'Registed: {returnColor(check)}')
+        twitterRequest = scraper(target)
     else:
-        return
+        target = input(f'Email Address: ')
+        if checkEmail(target) == True: print(f'Email has been {returnColor("Taken")}')
+        else: print(f'No account with this email')
 
 def brutedomain(email, chars):
     guesses = []
@@ -66,15 +72,6 @@ def brutedomain(email, chars):
                 print(f'Possible Domain - {email.split("@")[0]}@{domain}')
 
     return guesses[-1]
-
-
-def checkemail(email) -> bool:
-    url = f'https://twitter.com/users/email_available?email={email}'
-    r = requests.get(url).text
-    if 'Available' in r:
-        return True
-    else:
-        return False
 
 def scraper(target: str):
         url = "https://api.twitter.com/graphql/P8ph10GzBbdMqWZxulqCfA/UserByScreenName?variables=%7B%22screen_name%22%3A%22" + target + "%22%2C%22withHighlightedLabel%22%3Atrue%7D"
