@@ -1,18 +1,17 @@
-from api import checker, menu, twitterAPI
+from api.core import *
 
 def main():
-    menu.banner(); target = menu.menu()
-    check = twitterAPI.checkUsername(target)
+    banner(); target = menu()
+    check = checkUsername(target)
     if check == False: exit('Invalid Handle')
-    else: print(f'Registed: {menu.returnColor(check)}')
-
-    twitterRequest = twitterAPI.execute(target)
+    else: print(f'Registed: {returnColor(check)}')
+    twitterRequest = scraper(target)
 
     print(f'''
-{menu.returnColor("@")}{target} -> 
-    Full  Name.: {menu.returnColor(twitterRequest[0])} 
-    Email Hint.: {menu.returnColor(twitterRequest[1])} 
-    Phone Hint.: {menu.returnColor(twitterRequest[2])}
+{returnColor("@")}{target} -> 
+    Full  Name.: {returnColor(twitterRequest[0])} 
+    Email Hint.: {returnColor(twitterRequest[1])} 
+    Phone Hint.: {returnColor(twitterRequest[2])}
 ''')
 
 

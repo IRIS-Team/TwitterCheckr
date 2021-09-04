@@ -3,9 +3,52 @@ from bs4 import BeautifulSoup as bs
 from requests.adapters import HTTPAdapter
 from urllib3.util.ssl_ import create_urllib3_context
 from fake_headers import Headers
-from colorama import Fore, Style
 from urllib3.util.ssl_ import create_urllib3_context
-from api.colors import colors
+from util.colors import colors
+
+import mechanize, requests, os, sys, time, threading
+from mechanize import Browser
+
+def breach(user):
+    results = []
+    
+    res = requests.get(
+        'https://api.weleakinfo.to/api',
+        params={
+            'type': 'email',
+            'value': user,
+            'key': 'KEY'
+        }
+    )
+
+    json_data = res.json()
+
+    for r in json_data['result']:
+        sources = ', '.join(r['sources']) if len(r['sources']) > 0 else 'Unknown Source'
+        results.append([r['line'].split(':')[1], sources])
+
+    return results
+
+def returnColor(string):
+    return f'{colors.main}{string}{colors.text}'
+
+def banner():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
+
+    print (f'''  {colors.text}{colors.darktext}          {colors.main}z
+ {colors.darktext}  {colors.main}z      {colors.darktext}   _____ ___ _           _                 
+ {colors.main}        {colors.darktext}   |_   _/ __| |_  ___ __| |___ _ 
+ {colors.main}       z{colors.darktext}     | || (__| ' \/ -_) _| / / '_|
+ {colors.main}    ᓚᘏᗢ  {colors.darktext}    |_| \___|_||_\___\__|_\_\_|  {colors.sencondary}0.1{colors.text}
+{colors.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colors.darktext}
+ ''')
+
+def menu():
+    target = input(f'Username: {returnColor("@")}')
+    return target
 
 def brutedomain(email, chars):
     guesses = []
@@ -31,7 +74,7 @@ def checkemail(email) -> bool:
     else:
         return False
 
-def execute(target: str):
+def scraper(target: str):
         url = "https://api.twitter.com/graphql/P8ph10GzBbdMqWZxulqCfA/UserByScreenName?variables=%7B%22screen_name%22%3A%22" + target + "%22%2C%22withHighlightedLabel%22%3Atrue%7D"
         headers = {
             "accept": "*/*",
