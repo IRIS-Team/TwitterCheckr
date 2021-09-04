@@ -14,4 +14,10 @@ A twitter multi-tool for OSINT on twitter accounts.
     - Email Grabbing
     - Domain Brute-force
     - Creation Infomation
-    - Breach Checker
+    - Breach Checking Via WeLeakInfo
+
+## Future Updates
+    - Mass Password Checker
+    - Email Checker
+    - Mass User/Email Checker
+    - Login Checker
