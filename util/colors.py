@@ -8,3 +8,6 @@ class colors:
     text = colors["text"]
     darktext = colors["darktext"]
     error = colors["error"]
+
+def returnColor(string) -> str:
+    return f'{colors.main}{string}{colors.text}'

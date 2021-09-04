@@ -1,12 +1,9 @@
-import cfscrape, requests, json
+import cfscrape, requests, json, mechanize, os, sys, time, threading
 from bs4 import BeautifulSoup as bs
 from requests.adapters import HTTPAdapter
-from urllib3.util.ssl_ import create_urllib3_context
 from fake_headers import Headers
 from urllib3.util.ssl_ import create_urllib3_context
 from util.colors import colors
-
-import mechanize, requests, os, sys, time, threading
 from mechanize import Browser
 
 def breach(user):
@@ -29,8 +26,6 @@ def breach(user):
 
     return results
 
-def returnColor(string):
-    return f'{colors.main}{string}{colors.text}'
 
 def banner():
     if os.name == 'nt':
@@ -47,7 +42,7 @@ def banner():
  ''')
 
 def menu():
-    target = input(f'Username: {returnColor("@")}')
+    target = input(f'Username: {colors.returnColor("@")}')
     return target
 
 def brutedomain(email, chars):
