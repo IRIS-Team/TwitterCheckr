@@ -8,3 +8,10 @@
 ```
 
 A twitter multi-tool for OSINT on twitter accounts.
+
+## Features
+    - Username Checking
+    - Email Grabbing
+    - Domain Brute-force
+    - Creation Infomation
+    - Breach Checker
