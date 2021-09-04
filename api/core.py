@@ -4,7 +4,7 @@ from requests.adapters import HTTPAdapter
 from fake_headers import Headers
 from urllib3.util.ssl_ import create_urllib3_context
 from util.core import *
-from emails.core import *
+from util.emails.core import *
 from mechanize import Browser
 
 def breach(user):
