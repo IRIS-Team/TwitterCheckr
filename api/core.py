@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as bs
 from requests.adapters import HTTPAdapter
 from fake_headers import Headers
 from urllib3.util.ssl_ import create_urllib3_context
-from util.colors import colors
+from util.core import *
 from mechanize import Browser
 
 def breach(user):
@@ -33,16 +33,16 @@ def banner():
     else:
         _ = os.system('clear')
 
-    print (f'''  {colors.text}{colors.darktext}          {colors.main}z
- {colors.darktext}  {colors.main}z      {colors.darktext}   _____ ___ _           _                 
- {colors.main}        {colors.darktext}   |_   _/ __| |_  ___ __| |___ _ 
- {colors.main}       z{colors.darktext}     | || (__| ' \/ -_) _| / / '_|
- {colors.main}    ᓚᘏᗢ  {colors.darktext}    |_| \___|_||_\___\__|_\_\_|  {colors.sencondary}0.1{colors.text}
-{colors.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colors.darktext}
+    print (f'''  {colours.text}{colours.darktext}          {colours.main}z
+ {colours.darktext}  {colours.main}z      {colours.darktext}   _____ ___ _           _                 
+ {colours.main}        {colours.darktext}   |_   _/ __| |_  ___ __| |___ _ 
+ {colours.main}       z{colours.darktext}     | || (__| ' \/ -_) _| / / '_|
+ {colours.main}    ᓚᘏᗢ  {colours.darktext}    |_| \___|_||_\___\__|_\_\_|  {colours.sencondary}0.1{colours.text}
+{colours.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colours.darktext}
  ''')
 
 def menu():
-    target = input(f'Username: {colors.returnColor("@")}')
+    target = input(f'Username: {returnColor("@")}')
     return target
 
 def brutedomain(email, chars):
@@ -94,11 +94,11 @@ def scraper(target: str):
             try:
                 err = resp["errors"][0]["message"]
                 if "Not found" == err:
-                    print(f'{colors.error}•{colors.text} Username Not Found On Twitter')
+                    print(f'{colours.error}•{colours.text} Username Not Found On Twitter')
                 else:
                     print(err)
             except:
-                print(f'{colors.error}•{colors.text} Username Not Found On Twitter')
+                print(f'{colours.error}•{colours.text} Username Not Found On Twitter')
                 
         bio = resp["data"]["user"]["legacy"]["description"]
         followers = resp["data"]["user"]["legacy"]["followers_count"]
@@ -137,14 +137,14 @@ def scraper(target: str):
                     soup2.find('div', attrs={'class': 'is-errored'}).text
                     == 'Please try again later.'
                 ):
-                    exit(f'{colors.error}Rate Limit{colors.text}')
+                    exit(f'{colours.error}Rate Limit{colours.text}')
             except:
                 pass
 
             try:
                 info = soup2.find('ul', attrs={'class': 'Form-radioList'}).findAll('strong')
             except:
-                exit(f'{colors.error}Rate Limit{colors.text}')
+                exit(f'{colours.error}Rate Limit{colours.text}')
 
             try:
                 phone = int(info[0].text)
@@ -154,7 +154,7 @@ def scraper(target: str):
                 phone = 'None'
 
         except Exception as e:
-            exit(f'{colors.error}{e}{colors.text}')
+            exit(f'{colours.error}{e}{colours.text}')
 
         email = brutedomain(email, None)
         return [name, email, phone]
