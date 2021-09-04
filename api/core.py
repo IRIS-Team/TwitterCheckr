@@ -42,8 +42,15 @@ def banner():
  ''')
 
 def menu():
-    target = input(f'Username: {returnColor("@")}')
-    return target
+    print(f'''{returnColor("[1]")} Target User
+{returnColor("[2]")} Target Email
+''')
+    choice = int(input(f'{returnColor(">")} '))
+    if choice == 1:
+        target = input(f'Username: {returnColor("@")}')
+        return target
+    else:
+        return
 
 def brutedomain(email, chars):
     guesses = []
