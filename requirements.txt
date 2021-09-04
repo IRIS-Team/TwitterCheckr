@@ -1,0 +1,4 @@
+mechanize
+requests
+colorama
+cfscrape
