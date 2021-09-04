@@ -36,3 +36,14 @@ Email Address: {colours.main}{email}
 ''')
         except Exception as e:
             pass
+
+
+def gifScraper():
+    results = DuckDuckGo.search(f'inurl:pbs.twimg.com site:twitter.com')
+
+    if len(results) == 0:
+        raise Exception('No results found')
+
+    for result in results:
+        username = result[0].split('https://twitter.com/')[1].split('/')[0]
+        print(username)

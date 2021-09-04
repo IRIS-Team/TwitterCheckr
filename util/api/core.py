@@ -26,6 +26,7 @@ def menu():
     print(f'''{returnColor("[1]")} Target User
 {returnColor("[2]")} Target Email
 {returnColor("[3]")} Verified User Scraper
+{returnColor("[4]")} Gif Avatar Scraper
 ''')
     choice = int(input(f'{returnColor(">")} '))
     if choice == 1:
@@ -40,6 +41,8 @@ def menu():
         else: print(f'No account with this email')
     if choice == 3:
         verifyScraper()
+    if choice == 4:
+        gifScraper()
 
 def brutedomain(email, chars) -> str:
     guesses = []
