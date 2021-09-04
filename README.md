@@ -1,7 +1,9 @@
 # >TwitterCheckr
 A twitter multi-tool for OSINT on twitter accounts.
 
-# Features
+### Infomation
+TwitterCheckr also known as TCheckr is multi-tool for OSINT on twitter accounts, gather user deatils such as emails, usernames, keybase accounts, and account creation details with a clean CLI interface.
+### Features
 - [x] Username Checking
 - [x] Email Grabbing
 - [x] Domain Brute-force
