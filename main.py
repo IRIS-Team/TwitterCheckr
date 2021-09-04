@@ -1,5 +1,4 @@
-from api.core import *
-from util.core import *
+from util.api.core import banner, menu
 
 def main():
     banner(); menu()
