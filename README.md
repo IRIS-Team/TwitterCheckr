@@ -8,6 +8,7 @@ TwitterCheckr also known as TCheckr is multi-tool for OSINT on twitter accounts,
 - [x] Email Grabbing
 - [x] Domain Brute-force
 - [x] Creation Infomation
+- [x] Verified User Scraper
 - [ ] Breach Checking Via WeLeakInfo
 - [ ] Mass Password Checker
 - [ ] Email Checker

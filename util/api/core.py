@@ -1,32 +1,12 @@
-import cfscrape, requests, json, mechanize, os, sys, time, threading
+import cfscrape, requests, json, os, sys, threading
 from bs4 import BeautifulSoup as bs
 from requests.adapters import HTTPAdapter
 from fake_headers import Headers
 from urllib3.util.ssl_ import create_urllib3_context
+
 from util.core import *
 from util.emails.core import *
-from mechanize import Browser
-
-def breach(user) -> list:
-    results = []
-    
-    res = requests.get(
-        'https://api.weleakinfo.to/api',
-        params={
-            'type': 'email',
-            'value': user,
-            'key': 'KEY'
-        }
-    )
-
-    json_data = res.json()
-
-    for r in json_data['result']:
-        sources = ', '.join(r['sources']) if len(r['sources']) > 0 else 'Unknown Source'
-        results.append([r['line'].split(':')[1], sources])
-
-    return results
-
+from util.scraper.core import *
 
 def banner():
     if os.name == 'nt':
@@ -45,6 +25,7 @@ def banner():
 def menu():
     print(f'''{returnColor("[1]")} Target User
 {returnColor("[2]")} Target Email
+{returnColor("[3]")} Verified User Scraper
 ''')
     choice = int(input(f'{returnColor(">")} '))
     if choice == 1:
@@ -53,10 +34,12 @@ def menu():
         if check == False: exit('Invalid Handle')
         else: print(f'Registed: {returnColor(check)}')
         twitterRequest = scraper(target)
-    else:
+    if choice == 2:
         target = input(f'Email Address: ')
         if checkEmail(target) == True: print(f'Email has been {returnColor("Taken")}')
         else: print(f'No account with this email')
+    if choice == 3:
+        verifyScraper()
 
 def brutedomain(email, chars) -> str:
     guesses = []

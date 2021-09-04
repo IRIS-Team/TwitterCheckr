@@ -1,4 +1,4 @@
-import requests
+import requests, re, base64
 
 def checkEmail(email) -> bool:
     url = f'https://twitter.com/users/email_available?email={email}'
@@ -8,3 +8,6 @@ def checkEmail(email) -> bool:
         return True
     else:
         return False
+
+def getEmailFromPublicKey(public_key):
+    return re.findall(r'\s<(.*?)>', str(base64.b64decode(public_key)))
