@@ -1,8 +1,9 @@
 import os
+from api.colors import colors
 from colorama import Fore, Style
 
 def returnColor(string):
-    return f'{Fore.MAGENTA}{string}{Style.RESET_ALL}'
+    return f'{colors.main}{string}{Style.RESET_ALL}'
 
 def banner():
     if os.name == 'nt':
@@ -10,14 +11,14 @@ def banner():
     else:
         _ = os.system('clear')
 
-    print (f'''  {Fore.WHITE}{Fore.LIGHTBLACK_EX}          {Fore.MAGENTA}z
- {Fore.LIGHTBLACK_EX}  {Fore.MAGENTA}z      {Fore.LIGHTBLACK_EX}   _____ ___ _           _                 
- {Fore.MAGENTA}        {Fore.LIGHTBLACK_EX}   |_   _/ __| |_  ___ __| |___ _ 
- {Fore.MAGENTA}       z{Fore.LIGHTBLACK_EX}     | || (__| ' \/ -_) _| / / '_|
- {Fore.MAGENTA}    ᓚᘏᗢ  {Fore.LIGHTBLACK_EX}    |_| \___|_||_\___\__|_\_\_|  {Fore.LIGHTGREEN_EX}0.1{Fore.WHITE}
-{Fore.LIGHTBLACK_EX}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{Fore.LIGHTBLACK_EX}
+    print (f'''  {Fore.WHITE}{colors.darktext}          {colors.main}z
+ {colors.darktext}  {colors.main}z      {colors.darktext}   _____ ___ _           _                 
+ {colors.main}        {colors.darktext}   |_   _/ __| |_  ___ __| |___ _ 
+ {colors.main}       z{colors.darktext}     | || (__| ' \/ -_) _| / / '_|
+ {colors.main}    ᓚᘏᗢ  {colors.darktext}    |_| \___|_||_\___\__|_\_\_|  {colors.sencondary}0.1{Fore.WHITE}
+{colors.darktext}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{colors.darktext}
  ''')
 
 def menu():
-    target = input(f'Username: {Fore.MAGENTA}@{Style.RESET_ALL}')
+    target = input(f'Username: {returnColor("@")}')
     return target

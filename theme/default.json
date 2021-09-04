@@ -1,0 +1,7 @@
+{
+    "main_color": "\u001b[35m",
+    "sencondary": "\u001b[32m",
+    "text": "\u001b[37m",
+    "darktext": "\u001b[30m",
+    "error": "\u001b[31m"
+}

@@ -5,7 +5,7 @@ from urllib3.util.ssl_ import create_urllib3_context
 from fake_headers import Headers
 from colorama import Fore, Style
 from urllib3.util.ssl_ import create_urllib3_context
-
+from api.colors import colors
 
 def brutedomain(email, chars):
     guesses = []
@@ -56,11 +56,11 @@ def execute(target: str):
             try:
                 err = resp["errors"][0]["message"]
                 if "Not found" == err:
-                    print(f'{Fore.RED}•{Fore.RESET} Username Not Found On Twitter')
+                    print(f'{colors.error}•{colors.text} Username Not Found On Twitter')
                 else:
                     print(err)
             except:
-                print(f'{Fore.RED}•{Fore.RESET} Username Not Found On Twitter')
+                print(f'{colors.error}•{colors.text} Username Not Found On Twitter')
                 
         bio = resp["data"]["user"]["legacy"]["description"]
         followers = resp["data"]["user"]["legacy"]["followers_count"]
@@ -99,14 +99,14 @@ def execute(target: str):
                     soup2.find('div', attrs={'class': 'is-errored'}).text
                     == 'Please try again later.'
                 ):
-                    exit(f'{Fore.RED}Rate Limit{Fore.RESET}')
+                    exit(f'{colors.error}Rate Limit{colors.text}')
             except:
                 pass
 
             try:
                 info = soup2.find('ul', attrs={'class': 'Form-radioList'}).findAll('strong')
             except:
-                exit(f'{Fore.RED}Rate Limit{Fore.RESET}')
+                exit(f'{colors.error}Rate Limit{colors.text}')
 
             try:
                 phone = int(info[0].text)
@@ -116,7 +116,7 @@ def execute(target: str):
                 phone = 'None'
 
         except Exception as e:
-            exit(f'{Fore.RED}{e}{Fore.RESET}')
+            exit(f'{colors.error}{e}{colors.text}')
 
         email = brutedomain(email, None)
         return [name, email, phone]
